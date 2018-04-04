@@ -1,0 +1,36 @@
+<p>Todo List</p>
+
+<ng-container *ngFor="let todo of todos">
+  <div>
+    <!-- checkbox -->
+    <span class="checkbox-area">
+      <ng-container *ngIf="todo.done">
+        <button type="button" class="icon-button" (click)="undoneTodo(todo)">
+          <i class="icon check checked far fa-check-square"></i>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!todo.done">
+        <button type="button" class="icon-button" (click)="doneTodo(todo)">
+          <i class="icon check far fa-square"></i>
+        </button>
+      </ng-container>
+    </span>
+
+    <input [(ngModel)]="todo.name">
+    <!-- star -->
+    <ng-container *ngIf="todo.star">
+      <button type="button" class="icon-button" (click)="unstarTodo(todo)">
+        <i class="icon star starred fas fa-star"></i>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!todo.star">
+      <button type="button" class="icon-button" (click)="starTodo(todo)">
+        <i class="icon star far fa-star"></i>
+      </button>
+    </ng-container>
+
+    <button type="button" class="btn btn-primary add" (click)="saveTodo(todo)">save</button>
+    <button type="button" class="btn btn-primary add" (click)="deleteTodo(todo)">delete</button>
+  </div>
+</ng-container>
+<button type="button" class="btn btn-primary add" (click)="addTodo()">add</button>
